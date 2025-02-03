@@ -37,11 +37,14 @@ class RecipeType extends AbstractType
                 ]
             ])
               ->add('thumbnailFile' , FileType::class , [
-                'mapped' => false,
-                'constraints' => [
-                    new Image()
+                'attr' =>[
+                    'class' => 'form-control'
+                ],
+                'label' => "Choisis ton image: ",
+                'label_attr' => [
+                    'class' => 'input-label'
                 ]
-              ])      
+              ] )      
 
             ->add('category', EntityType::class , [
                 'class' => Category::class,

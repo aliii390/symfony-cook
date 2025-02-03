@@ -5,8 +5,15 @@ namespace App\Entity;
 use App\Repository\RecipeRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
+
+#[Vich\Uploadable]
+
+
 class Recipe
 {
     #[ORM\Id]
@@ -30,6 +37,11 @@ class Recipe
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $thumbnail = null;
+
+    #[Vich\UploadableField(mapping: 'recipes' , fileNameProperty: 'thumbnail')]
+    #[Assert\Image()]
+    private ?File $thumbnailFile = null;
+
 
 
     public function __construct()
@@ -111,5 +123,25 @@ class Recipe
         $this->thumbnail = $thumbnail;
 
         return $this;
+    }
+
+    /**
+     * Get the value of thumbnailFile
+     */ 
+    public function getThumbnailFile()
+    {
+        return $this->thumbnailFile;
+    }
+
+    /**
+     * Set the value of thumbnailFile
+     *
+     * @return  self
+     */ 
+    public function setThumbnailFile(?File $thumbnailFile):void
+    {
+        $this->thumbnailFile = $thumbnailFile;
+
+       
     }
 }

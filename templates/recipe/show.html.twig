@@ -15,7 +15,7 @@
                 <th>Name</th>
                 <td>{{ recipe.name }}</td>
                 <td>{{ recipe.category}}</td>
-                <img src="/recettes/images/{{ recipe.thumbnail }}" alt="">
+                <img src="{{ vich_uploader_asset(recipe, 'thumbnailFile')  }}" alt="">
             </tr>
             <tr>
                 <th>CreatedAt</th>

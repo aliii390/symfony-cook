@@ -25,6 +25,7 @@
                 <td>{{ recipe.name }}</td>
                 {# <td>{{recipe_category}}</td> #}
                 <td>{{ recipe.slug }}</td>
+                
                 <td>{{ recipe.createdAt ? recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_recipe_show', {'id': recipe.id}) }}">Voir</a>

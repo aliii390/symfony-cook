@@ -31,10 +31,10 @@ final class RecipeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $file = $form->get('thumbnailFile')->getData();
-            $filename  =  $recipe->getId() . '.' . $file->getClientOriginalExtension();
-            $file->move($this->getParameter('kernel.project_dir') . '/public/recettes/images', $filename);
-            $recipe->setThumbnail($filename);
+            // $file = $form->get('thumbnailFile')->getData();
+            // $filename  =  $recipe->getId() . '.' . $file->getClientOriginalExtension();
+            // $file->move($this->getParameter('kernel.project_dir') . '/public/recettes/images', $filename);
+            // $recipe->setThumbnail($filename);
 
 
 
