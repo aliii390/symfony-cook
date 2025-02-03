@@ -30,6 +30,15 @@ final class RecipeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $form->get('thumbnailFile')->getData();
+            $filename  =  $recipe->getId() . '.' . $file->getClientOriginalExtension();
+            $file->move($this->getParameter('kernel.project_dir') . '/public/recettes/images', $filename);
+            $recipe->setThumbnail($filename);
+
+
+
+        //    dd( $file->getClientOriginalName(), $file->getClientOriginalExtension());
             $entityManager->persist($recipe);
             $entityManager->flush();
 

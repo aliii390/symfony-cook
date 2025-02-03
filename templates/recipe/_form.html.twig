@@ -1,6 +1,6 @@
 {{ form_start(form) }}
 
-
+  <img src="/recettes/images/{{ recipe.thumbnail }}" alt="">
 
     {{ form_widget(form) }}
         <button class="btn">{{ button_label|default('Save') }}</button>
